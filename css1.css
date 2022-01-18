@@ -1,0 +1,376 @@
+/*----INDEX----*/
+/*----Geral----*/
+body{
+    margin: 0px;
+    padding: 0px;
+}
+/*----Rodapés----*/
+.footer{
+    clear:both;
+    position: relative;
+    text-align: center;
+    color:grey;
+    font-size: 13px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*Div base*/
+.base{
+    width:100%;
+    height:100%;
+    margin: 0%;
+    padding: 0%;
+}
+/*Barra de Navegacao*/
+nav{
+    position: sticky;
+    top: 0%;
+    z-index: 1;
+}
+nav ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    list-style: none;
+    text-align: center; 
+    background-color: #dddddd;
+}
+/*Remover a lista para ficar na horizontal*/
+nav ul li{
+    display: inline-flex;
+}
+/*Ligacoes*/
+nav ul li a{
+    padding: 20px 40px; 
+    text-decoration: none;
+    color: #666; 
+}
+nav ul li a.ativo {
+    color: black;
+    background-color: white;
+}
+nav ul li a:hover:not(.ativo){
+    background-color: grey;
+    color: black;
+}
+/*Texto Index*/
+#inicial{
+    position: relative;
+}
+#inicial img{
+    height: 585px;
+    width:100%;
+    margin: 0px;
+    padding: 0px;
+}
+#texto_centro{
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    text-align: center;
+    color: grey;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+/*Botão Inicial*/
+button{
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: white;
+    border: 1px solid grey;
+    color: olivedrab;
+}
+button:hover{
+    background-color:rgb(175, 175, 130);
+}
+
+/*---ABOUT---*/
+h1{
+    text-align: center;
+}
+h2{
+    margin-left: 105px;
+    margin-right: 120px;
+    text-align: center;
+    background-color: #fde0dd;
+} 
+#sobre{
+    height: 2000px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+img{
+    padding-left: 120px;
+}
+#textoSo{
+    width: 700px;
+    height: 430px;
+    position: relative;
+    float: right;
+    padding: 0px;
+    margin-right: 100px;
+    text-align: justify;
+}
+.l1{
+    padding-bottom: 13px;
+    list-style-type: circle;
+}
+#lista1{
+    float: left;
+}
+#lista2{
+    width: 400px;
+    height: 162px;
+    float: right;
+}
+/*CV pdf*/
+#cv{
+    bottom: 0px;
+    position: relative;
+    float:left;
+}
+#cv img{
+    padding: 0px;
+}
+#cv img:hover{
+    border: 8px outset black;
+}
+/*Redes Sociais e Email*/
+#redes_email{
+    height: 150px;
+    top: 42px;
+    position: relative;
+}
+#redes{
+    margin-left: 120px;
+    width:350px;
+    float:left;
+    text-align: center;
+}
+#redes img{
+    padding: 0px;
+}
+#email{
+    width: 300px;
+    position: relative;
+    float: right;
+    margin-right: 130px;
+    text-align: center;
+    padding: 5px;
+}
+#email img{
+    padding: 0px;
+}
+
+.texto_h2{
+    margin-left: 90px;
+    margin-right: 80px;
+}
+/*Competencias*/
+#competencias{
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#texto_competencias {
+    padding-top: 30px;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+}
+#quadro{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#softwares{
+    width: 220px;
+    height: 300px;
+    vertical-align: top;
+    padding:20px;
+    position: relative;
+    display: inline-block;
+    margin-left: 110px;
+    margin-right: 20px;
+    border: 2px dashed black;
+}
+#ferramentas{
+    width: 220px;
+    height: 300px;
+    padding:20px;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+    border: 2px dashed black;
+}
+#linguagens{
+    width: 220px;
+    height: 300px;
+    padding:20px;
+    position: relative;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px dashed black;
+}
+#idiomas{
+    height: 300px;
+    width: 220px;
+    padding:20px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px dashed black;
+}
+#softwares img{
+    padding: 0px;
+    margin-left: 100px;
+}
+#ferramentas img{
+    padding: 0px;
+    margin-left: 100px;
+}
+#linguagens img{
+    padding: 0px;
+    margin-left: 100px;
+}
+#idiomas img{
+    padding: 0px;
+    margin-left: 100px;
+}
+#softwares ul{
+    width: 180px;
+    list-style: none;
+}
+#ferramentas ul{
+    width: 80px;
+    margin-left: 40px;
+    list-style: none;
+}
+#linguagens ul{
+    width: 80px;
+    margin-left: 40px;
+    list-style: none;
+}
+#idiomas ul{
+    list-style: none;
+    width: 80px;
+    margin-left: 40px;
+}
+h3{
+    text-align: center;
+}
+/*Interação com quadros*/
+#softwares:hover{
+    background-color: #bad4e2;
+}
+#ferramentas:hover{
+    background-color: #bad4e2;
+}
+#linguagens:hover{
+    background-color: #bad4e2;
+}
+#idiomas:hover{
+    background-color: #bad4e2;
+}
+#espaço{
+    height: 100px;
+    position: relative;
+}
+
+/*---WORKSHOPS E CERTIFICADOS---*/
+/*Posição Imagens*/
+#cursoR{
+    position: relative;
+    margin-left:70px;
+    margin-right:100px;
+}
+#englishb2{
+    position: relative;
+    margin-left:70px;
+    margin-right:100px;
+}
+#opengis{
+    position: relative;
+    margin-left: 300px ;
+}
+#texto_certificados{
+    width: 900px;
+    position: relative;
+    margin-left: 200px;
+    background-color: rgb(243, 243, 243);
+    font-size: 14px;
+}
+
+/*Hobbies e Interesses*/
+#hobbies{
+    height: 400px;
+    margin-top: 70px;
+}
+#hobbies img{
+    margin-left: 70px;
+    float: left;
+}
+/*tabela*/
+table{ 
+    width: 800px;
+    padding: 5px;
+    background-color: #dee7f8;
+}
+table td{
+    text-align: center;
+    padding: 19px;
+}
+/*---Interação tabela---*/
+tr:hover{
+    background-color: white;
+    color: grey;
+}
+
+/*---STORYMAP---*/
+/*Características iframe*/
+iframe{
+    width:100%;
+    height:580px;
+    border:none;
+}
+
+/*---PORTFÓLIO---*/
+#textopo{
+    padding:50px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.pdf_left{
+    width: 60%;
+    height: 200px;
+    display: flex; 
+    margin-left: 20%;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 10px double black;
+}
+.pdf_right{
+    width: 60%;
+    height: 200px;
+    display: flex;
+    float: right;
+    margin-right: 18.5%;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 10px double black;
+}
+.pdf_text{
+    width: 50%;
+    margin-left: 5%;
+}
+/*---Interação com os quadros*/
+.pdf_left:hover{
+    border: 10px double greenyellow;
+}
+.pdf_right:hover{
+    border: 10px double blue;
+}

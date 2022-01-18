@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBSIG</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    crossorigin=""/> 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    crossorigin=""></script>
+    <script src="pnpg.geojson" defer></script>
+    <script src="concelhos_pnpg.geojson" defer></script>
+    <script src="quedas_mgeral.geojson" defer></script>
+    <script src="rede.geojson" defer></script>
+    <script src="trilhos.geojson" defer></script>
+    <script src="leaflet-heat.js" defer></script>
+    <script src="leaflet.ajax.min.js" defer></script>
+    <style>
+        body{
+        margin: 0px;
+        padding: 0px;
+        }
+        /*----Rodapés----*/
+        .footer{
+            clear:both;
+            position: relative;
+            text-align: center;
+            color:grey;
+            font-size: 13px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        /*Div base*/
+        .base{
+            width:100%;
+            height:100%;
+            margin: 0%;
+            padding: 0%;
+        }
+        /*Barra de Navegacao*/
+        nav{
+            position: sticky;
+            top: 0%;
+            z-index: 1;
+        }
+        nav ul{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow:hidden;
+            list-style: none;
+            text-align: center; 
+            background-color: #dddddd;
+        }
+        /*Remover a lista para ficar na horizontal*/
+        nav ul li{
+            display: inline-flex;
+        }
+        /*Ligacoes*/
+        nav ul li a{
+            padding: 20px 40px; 
+            text-decoration: none;
+            color: #666; 
+        }
+        nav ul li a.ativo {
+            color: black;
+            background-color: white;
+        }
+        nav ul li a:hover:not(.ativo){
+            background-color: grey;
+            color: black;
+        }
+        #bg2{
+            height: 585px;
+            width:100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        #bg3{
+            height: 645px;
+            width:100%;
+            margin: 0px;
+            padding: 0px;
+            opacity: 70%;
+        }
+        /*---Caixa título---*/
+        #titulo{
+            width: 100%;
+            position: absolute;
+            top: 140px;
+            text-align: center;
+        }
+        #titulo h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            color: grey;
+        }
+        /*---Botão Saber Mais---*/
+        #button2{
+            position: relative;
+            top: 240px;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px; 
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: white;
+            border: 1px solid grey;
+            color: olivedrab;
+        }
+        #button2:hover{
+            background-color:rgb(175, 175, 130);
+        }
+        /*---Caixa de Texto---*/
+        #fundo{
+            width: 80%;
+            height: 470px;
+            position: absolute;
+            top: 730px;
+            left: 130px;
+            font-size: 14px; 
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: white;
+            opacity: 70%;
+        }
+        /*---Caixa de Fundo---*/
+        #fundo p{
+            height: 100px; 
+            padding-top: 50px;
+            padding-left: 50px;
+            padding-right: 50px;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: justify;
+            text-indent: 25px;
+            line-height: 50px;
+        }
+        /*---Imagem PNPG---*/
+        #fundo img{
+            float: right;
+            margin-right: 100px;
+            padding: 0px;
+        }
+        /*---Botão 3---*/
+        #button3{
+            position: relative;
+            left: 370px;
+            top: 130px;
+            padding: 16px 28px;
+            text-decoration: none;
+            font-size: 14px; 
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: white;
+            border: 1px solid grey;
+            color: black;
+        }
+        #button3:hover{
+            background-color: grey;
+            color: white;
+            font-weight: bolder;
+            font-size:larger;
+        }
+
+        #mapa_geral{
+            position: relative;
+            top: 100px;
+            height: 750px;
+        }
+        #mapa_geral h1{
+            margin-top: 0px;  
+            text-align: center;
+        }
+        #mapDIV{
+            height: 500px;
+            width: 45%;
+            z-index:0;
+            float: left;
+            margin-top: 0px;
+            margin-left: 80px;
+            border: 1px solid black;
+        }
+        #caixa_imgs{
+            height: 490px;
+            width: 35%;
+            float: right;
+            margin-top: 0px;
+            margin-right: 100px;
+            padding: 5px;
+            background-color: lightgray;
+            text-align: center;
+            align-items: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size:14px;
+        }
+        #caixa_imgs h5{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size:20px;
+        }
+        #caixa_imgs img{
+            padding: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="base">
+        <!-- Secção Barra de Navegação -->
+        <nav>
+            <ul>
+                <li><a class="active" href="index.html">INÍCIO</a></li>
+                <li><a href="about.html">SOBRE MIM</a></li>
+                <li><a href="storymap.html">PERCURSO</a></li>
+                <li><a href="portfolio.html">PORTÓLIO</a></li>
+                <li><a class="ativo" href="map.html">WEBSIG</a></li>
+            </ul>
+        </nav>
+        <div ID="titulo">
+            <h1>QUEDAS D'ÁGUA NO <br> PARQUE NACIONAL PENEDA-GERÊS</h1>
+            <!--Botão (Não funcionava como button + <a>)-->
+            <form style="display: inline" action="map.html#bg3" method="get">
+                <button id="button2">SABER MAIS</button>
+            </form>
+        </div>
+        <div>
+            <img id="bg2" src="Multimedia/bg2.jpg" alt="background">
+            <img id="bg3" src="Multimedia/bg3.jpg" alt="background">
+        </div>
+        <div id="fundo">
+            <p>O <b> Parque Nacional Peneda-Gerês</b> (PNPG) é o único parque nacional em Portugal. Este é composto por um <b>património histórico, cultural e natural muito diversificado</b>, devendo assim ser preservado. Cada vez mais, esta área protegida é eleita para o turismo da Natureza e atividades relacionadas. <br>Carregue <a href="http://www2.icnf.pt/portal/ap/pnpg"> aqui </a> (Site ICNF) para saber mais sobre esta área protegida.</p>
+            <!--Botão (Não funcionava como button + <a>)-->
+                <form style="display: inline" action="map.html#mapa_geral" method="get">
+                    <button id="button3">AVANÇAR</button>
+                </form>
+            <img src="https://i1.wp.com/www.portadomezio.pt/wp-content/uploads/2016/05/logo-PNPG.png" alt="PNPG">
+        </div>
+        <script src="mapascript.js" defer></script>
+        <div id="mapa_geral">
+            <h1>Quedas de Água no Parque Nacional Peneda-Gerês</h1>
+            <div id="mapDIV"></div>
+            <div id="caixa_imgs"></div>
+        </div>
+        <!--Rodapé-->
+        <!--Não consegui pôr como footer devio a um possível erro do body-->
+        <div class="footer">
+            <p>Créditos Imagens</p>
+            <p>Image 1 by David Fernandez Vergara via <a href="https://www.flickr.com/photos/dfvergara/48736177426/"> Flickr </a></p>
+            <p>Image 2 by  via Vítor Ribeiro <a href="https://www.flickr.com/photos/vribeiro/50297642242/"> Flickr </a></p>
+            <p>Image 3 by  <a href="http://www.portadomezio.pt/logo-pnpg-2/"> Porta do Mezio </a></p>
+            <p>© Copyright Projeto AWOT. All Rights Reserved <br> Designed by Joana Santos</p>
+        </div> 
+    </div>
+</body>
+</html>
